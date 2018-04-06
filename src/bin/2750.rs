@@ -1,15 +1,9 @@
+extern crate daily_boj;
+
 use std::io;
 use std::io::BufRead;
 
-fn expect_i32() -> i32 {
-    let stdin = io::stdin();
-    let mut handle = stdin.lock();
-    let mut buf = String::new();
-
-    handle.read_line(&mut buf);
-
-    return buf.trim_right().parse().expect("Failed to expect i_32");
-}
+use daily_boj::utils;
 
 fn quick_sort(v: &mut [i32]) {
     let len = v.len();
@@ -39,8 +33,8 @@ fn partition(v: &mut [i32]) -> usize {
 }
 
 fn main() {
-    let count = expect_i32();
-    let mut numbers: Vec<_> = (0..count).map(|_| { expect_i32() }).collect();
+    let count = utils::expect_i32();
+    let mut numbers: Vec<_> = (0..count).map(|_| { utils::expect_i32() }).collect();
 
     quick_sort(&mut numbers);
     for number in numbers.iter() {
